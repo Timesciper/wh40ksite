@@ -8,7 +8,7 @@ class RulesVersion(models.Model):
     short_name = models.CharField(max_length=5, verbose_name='Короткое название')
 
     def __str__(self):
-        return self.name + ':' + self.short_name
+        return self.name
 
     class Meta:
         verbose_name = 'Набор правил'
@@ -25,6 +25,7 @@ class ObjectiveType(models.Model):
     name = models.CharField(max_length=30, verbose_name='Название типа вторичной миссии')
     rule_source = models.ForeignKey(RulesVersion, verbose_name='Откуда правила', on_delete=models.CASCADE)
     #  version = models.CharField(max_length=20, verbose_name='')
+    obj_type = models.CharField(choices=OBJECTIVE_TYPES, default='sec', verbose_name='Тип класса обжективов')
 
     def __str__(self):
         return self.name
